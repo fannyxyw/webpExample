@@ -11,7 +11,6 @@
 #include "webp/decode.h"
 #include "webp/mux.h"
 #include "webp/demux.h"
-#include "anim_util.h"
 #include <atltypes.h>
 #include <atlfile.h>
 #include <complex>
