@@ -38,8 +38,12 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>../bin/$(Configuration)/</OutDir>
+    <IntDir>../build_temp/$(Configuration)/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>../bin/$(Configuration)/</OutDir>
+    <IntDir>../build_temp/$(Configuration)/</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -111,25 +115,23 @@
     </Midl>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="wtlFrame.cpp" />
+    <ClInclude Include="../wtlFrame/AboutDlg.h" />
+    <ClInclude Include="../wtlFrame/MainFrm.h" />
+    <ClInclude Include="../wtlFrame/resource.h" />
+    <ClInclude Include="../wtlFrame/stdafx.h" />
+    <ClInclude Include="../wtlFrame/wtlFrameView.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AboutDlg.h" />
-    <ClInclude Include="MainFrm.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="stdafx.h" />
-    <ClInclude Include="wtlFrameView.h" />
+    <ResourceCompile Include="../wtlFrame/wtlFrame.rc" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="wtlFrame.rc" />
+    <Image Include="../wtlFrame/res/toolbar.bmp" />
+    <Image Include="../wtlFrame/res/wtlFrame.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\toolbar.bmp" />
-    <Image Include="res\wtlFrame.ico" />
+    <ClCompile Include="..\wtlFrame\stdafx.cpp" />
+    <ClCompile Include="..\wtlFrame\wtlFrame.cpp" />
+    <ClCompile Include="..\wtlFrame\wtlFrameView.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

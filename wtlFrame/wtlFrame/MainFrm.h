@@ -36,8 +36,9 @@ public:
 		MESSAGE_HANDLER(WM_CREATE, OnCreate)
 		MESSAGE_HANDLER(WM_DESTROY, OnDestroy)
 		COMMAND_ID_HANDLER(ID_APP_EXIT, OnFileExit)
-		COMMAND_ID_HANDLER(ID_FILE_NEW, OnFileNew)
-		COMMAND_ID_HANDLER(ID_VIEW_TOOLBAR, OnViewToolBar)
+        COMMAND_ID_HANDLER(ID_FILE_NEW, OnFileNew)
+        COMMAND_ID_HANDLER(ID_FILE_OPEN, OnFileOpen)
+        COMMAND_ID_HANDLER(ID_VIEW_TOOLBAR, OnViewToolBar)
 		COMMAND_ID_HANDLER(ID_APP_ABOUT, OnAppAbout)
 		CHAIN_MSG_MAP(CUpdateUI<CMainFrame>)
 		CHAIN_MSG_MAP(CFrameWindowImpl<CMainFrame>)
@@ -90,6 +91,20 @@ public:
 
 		return 0;
 	}
+
+    LRESULT OnFileOpen(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
+    {
+        // TODO: add code to initialize document
+
+        wchar_t* filter = L"image files (*.webp)\0*.webp\0All Files (*.*)\0*.*\0\0";
+        CFileDialog openDlg(TRUE, NULL, NULL, OFN_HIDEREADONLY | OFN_OVERWRITEPROMPT, filter, 0);
+        if (openDlg.DoModal() == IDOK)
+        {
+            m_view.LoadFile(openDlg.m_szFileName);
+        }
+
+        return 0;
+    }
 
 	LRESULT OnViewToolBar(WORD /*wNotifyCode*/, WORD /*wID*/, HWND /*hWndCtl*/, BOOL& /*bHandled*/)
 	{
