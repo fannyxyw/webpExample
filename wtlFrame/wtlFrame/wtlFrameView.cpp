@@ -19,6 +19,11 @@ LRESULT CWtlFrameView::OnTimer(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*/, 
             m_frameIndex = 0;
         }
 
+        if (m_frameIndex >= 0)
+        {
+            ::MessageBox(0, 0, 0, 0);
+
+        }
         LoadFrameData(m_frameIndex);
         InvalidateRect(NULL);
     }
