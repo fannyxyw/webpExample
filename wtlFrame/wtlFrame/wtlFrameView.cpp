@@ -108,6 +108,8 @@ void CWtlFrameView::LoadFrameData(int32_t index)
     WebPMuxGetFrame(m_pWebMux, index, &image);
     SetTimer(WEBP_TIMER, image.duration, NULL);
 
+    AtlTrace(_T("output success SDFSDFSDF\n"));
+
     int32_t width = m_szAnim.cx;
     int32_t height = m_szAnim.cy;
     uint8_t* pBGRAData = WebPDecodeBGRA(image.bitstream.bytes, image.bitstream.size, &width, &height);
