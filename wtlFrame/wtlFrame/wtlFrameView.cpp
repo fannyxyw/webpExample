@@ -19,6 +19,8 @@ LRESULT CWtlFrameView::OnTimer(UINT /*uMsg*/, WPARAM wParam, LPARAM /*lParam*/, 
             m_frameIndex = 0;
         }
 
+
+        ::MessageBox(0, 0, 0, 0);
         LoadFrameData(m_frameIndex);
         InvalidateRect(NULL);
     }
@@ -107,6 +109,8 @@ void CWtlFrameView::LoadFrameData(int32_t index)
     WebPDataInit(&image.bitstream);
     WebPMuxGetFrame(m_pWebMux, index, &image);
     SetTimer(WEBP_TIMER, image.duration, NULL);
+
+    AtlTrace(_T("output success SDFSDFSDF\n"));
 
     int32_t width = m_szAnim.cx;
     int32_t height = m_szAnim.cy;
